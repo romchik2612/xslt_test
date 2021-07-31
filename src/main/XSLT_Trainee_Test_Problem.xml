@@ -1,90 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="test/xsl" href="src/main/test.xsl"?>
+<?xml-stylesheet type="test/xsl" href="test.xsl"?>
 <!--DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"-->
 <article>
   <title>XSLT Trainee Test Problem</title>
-<toc>
-  <title>TOC</title>
-  <orderedlist>
-    <listitem>
-      <link linkend="chapter-introduction">Introduction</link>
-    </listitem>
-    <listitem>
-      <link linkend="problem-description">Problem description</link>
-    </listitem>
-    <listitem>
-      <link linkend="docbook-elements-catalog">DocBook elements catalog</link>
-      <itemizedlist>
-        <listitem>
-          <link linkend="block-level-element">Block-level elements</link>
-          <itemizedlist>
-            <listitem>
-              <link linkend="paragraph-element">Paragraph element</link>
-            </listitem>
-            <listitem>
-              <link linkend="ordered-list-element">Ordered list element</link>
-            </listitem>
-            <listitem>
-              <link linkend="unordered-list-element">Unordered list element</link>
-            </listitem>
-            <listitem>
-              <link linkend="optional-block-level-elements-task">Optional block-level elements tasks</link>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-        <listitem>
-          <link linkend="chapter-inline-elements">Inline elements</link>
-          <itemizedlist>
-            <listitem>
-              <link linkend="command-element">'command' element</link>
-            </listitem>
-            <listitem>
-              <link linkend="emphasis-element">'emphasis' element</link>
-            </listitem>
-            <listitem>
-              <link id="optional-inline-elements">Optional inline elements task</link>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-        <listitem>
-          <link linkend="link-elements">Link elements</link>
-          <itemizedlist>
-            <listitem>
-              <link linkend="internal-links">Internal links</link>
-            </listitem>
-            <listitem>
-              <link linkend="external-links">External links</link>
-            </listitem>
-            <listitem>
-              <link linkend="optional-link-elements">Optional link elements task</link>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-    <listitem>
-      <link linkend="bonus-task">Bonus tasks</link>
-      <itemizedlist>
-        <listitem>
-          <link linkend="implement-toc">Implement table of contents</link>
-        </listitem>
-        <listitem>
-          <link linkend="implement-multiple-HTML">Implement multiple HTML page output</link>
-        </listitem>
-      </itemizedlist>
-    </listitem>
-    <listitem>
-      <link linkend="tools">Tools</link>
-    </listitem>
-    <listitem>
-      <link linkend="accepture-criteria">Acceptance criteria</link>
-    </listitem>
-    <listitem>
-      <link linkend="resources">Resources</link>
-    </listitem>
-  </orderedlist>
-</toc>
 
   <section>
     <title id="chapter-introduction">Introduction</title>

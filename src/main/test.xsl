@@ -1,44 +1,85 @@
-<xsl:stylesheet version = '1.0'
-                xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:redirect="org.apache.xalan.xslt.extensions.Redirect"
+                extension-element-prefixes="redirect"
+                >
+    <xsl:output method="html"/>
 
 
-<xsl:template match="/article">
-    <xsl:apply-templates/>
+    <xsl:template match="/">
+<html>
     <head>
 <title>
-    <xsl:value-of select="title"/>
+    <xsl:value-of select="article/title"/>
 </title>
     </head>
+    <body>
+        <h3>
+            <xsl:value-of select="article/title"/>
+        </h3>
+        <ul>
+            <xsl:for-each select="article/section">
+            <li>
+                <a href="{concat('section', position(), '.html')}">
+                    <xsl:value-of select="title"/>
+                </a>
+            </li>
+            </xsl:for-each>
+        </ul>
+        <xsl:for-each select="article/section">
+            <xsl:result-document method="html"
+                                 include-content-type="no"
+                                 href="{concat('section', position(), '.html')}"
+                                 omit-xml-declaration="yes">
+                <xsl:apply-templates select="." mode="create-html-file"/>
+
+            </xsl:result-document>
+        </xsl:for-each>
+    </body>
+</html>
 </xsl:template>
+    <xsl:template match="title">
+        <h2>
+            <xsl:value-of select="."/>
+        </h2>
+    </xsl:template>
+    <xsl:template match="section" mode="create-html-file">
+        <html>
+            <head>
+                <title><xsl:value-of select="title"/></title>
+            </head>
+            <body style="font-family: sans-serif;">
+                <xsl:apply-templates select="."/>
+                <form>
+                    <xsl:for-each select="/article/section">
+                        <button formaction="{concat('section', position(), '.html')}">
+
+                                    <xsl:value-of select="title"/>
+                        </button>
+                    </xsl:for-each>
+                    <button formaction="index.html">
+                        Return to TOC
+                    </button>
+                </form>
+            </body>
+        </html>
+    </xsl:template>
 
     <xsl:template match="section">
-        <b style="font-weight: bold;">
+        <div>
         <xsl:apply-templates/>
-        </b>
+        </div>
     </xsl:template>
+    <xsl:template match="/article/title"/>
 
-    <xsl:template match="title">
-        <h3 style="color:blue;" id="">
-            <xsl:attribute name="id">
-                <xsl:value-of select="@id"/>
-            </xsl:attribute>
-            <xsl:value-of select="."/>
-        </h3>
-
-    </xsl:template>
-
-    <xsl:template match="toc">
-        <nav>
-            <xsl:apply-templates/>
-        </nav>
-    </xsl:template>
     <xsl:template match="para">
         <p>
         <xsl:apply-templates/>
         </p>
     </xsl:template>
     <xsl:template match="code">
-        <i style="font-weight: normal;">
+        <i style="font-weight: bold;">
             <xsl:value-of select="."/>
         </i>
     </xsl:template>
@@ -71,13 +112,11 @@
     </xsl:template>
     <xsl:template match="listitem">
         <li>
-            <b style="font-weight: normal;">
             <xsl:apply-templates/>
-            </b>
         </li>
     </xsl:template>
     <xsl:template match="keycap">
-        <b style="font-weight:900">
+        <b style="background-color:powderblue;">
             <xsl:value-of select="."/>
         </b>
     </xsl:template>
